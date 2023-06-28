@@ -32,7 +32,7 @@ fun main() {
     }
 }
 
-fun showSeats(seats: MutableList<MutableList<Char>>) {
+fun showSeats(seats: List<List<Char>>) {
     println("\nCinema:")
     for (i in seats.indices) {
         if (i == 0) {
