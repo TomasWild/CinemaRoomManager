@@ -1,4 +1,4 @@
-package org.wild.kotlin.cinema
+package com.wild.kotlin.cinema
 
 fun main() {
     println("Cinema:")
@@ -21,11 +21,9 @@ fun main() {
             1 -> showSeats(seats)
             2 -> {
                 val selectedSeat = buyTicket(seats)
-                if (selectedSeat != null) {
-                    val (selectedRow, _) = selectedSeat
-                    purchasedTickets++
-                    currentIncome += calculateTicketPrice(numberOfRows, numberOfSeatsPerRow, selectedRow)
-                }
+                val (selectedRow, _) = selectedSeat
+                purchasedTickets++
+                currentIncome += calculateTicketPrice(numberOfRows, numberOfSeatsPerRow, selectedRow)
             }
             3 -> showStatistics(purchasedTickets, totalSeats, currentIncome, totalIncome)
             0 -> return
@@ -34,7 +32,7 @@ fun main() {
     }
 }
 
-fun showSeats(seats: List<List<Char>>) {
+fun showSeats(seats: MutableList<MutableList<Char>>) {
     println("\nCinema:")
     for (i in seats.indices) {
         if (i == 0) {
@@ -52,7 +50,7 @@ fun showSeats(seats: List<List<Char>>) {
     }
 }
 
-fun buyTicket(seats: MutableList<MutableList<Char>>): Pair<Int, Int>? {
+fun buyTicket(seats: MutableList<MutableList<Char>>): Pair<Int, Int> {
     while (true) {
         println("\nEnter a row number:")
         val selectedRow = readln().toInt()
